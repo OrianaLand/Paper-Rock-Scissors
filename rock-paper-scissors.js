@@ -18,3 +18,8 @@ function getHumanChoice() {
         alert("Invalid choice. Please enter 1, 2, or 3.");
     }
 }
+
+let humanScore = 0;
+let computerScore = 0;
+let humanSelection = getHumanChoice();
+let computerSelection = getComputerChoice();
