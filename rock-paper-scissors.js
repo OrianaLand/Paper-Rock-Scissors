@@ -6,16 +6,26 @@ function getComputerChoice() {
 
 function getHumanChoice() {
     while (true) {
-        const userChoice = prompt("Enter your choice (1 for Rock, 2 for Paper, 3 for Scissors):");
+        let userChoice = prompt("Enter your choice (Rock, Paper or Scissors):");
 
-        // Convert to number and check if it's 1, 2, or 3
-        const choice = parseInt(userChoice);
+        //Make variable case-insensitive
+        userChoice = userChoice.toLowerCase();
 
-        if (choice === 1 || choice === 2 || choice === 3) {
-            return choice;
+        let choice = undefined;
+        //Give the choice a numeric value according to userChoice
+        switch (true) {
+            case userChoice === "rock":
+                choice = 1;
+                return choice;
+            case userChoice === "paper":
+                choice = 2;
+                return choice;
+            case userChoice === "scissors":
+                choice = 3;
+                return choice;
         }
 
-        alert("Invalid choice. Please enter 1, 2, or 3.");
+        alert("Invalid choice. Please enter Rock, Paper or Scissors.");
     }
 }
 
