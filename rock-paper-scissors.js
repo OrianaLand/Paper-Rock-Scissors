@@ -1,32 +1,39 @@
 console.log("Rock, paper, scissors.");
 
 function getComputerChoice() {
-    return Math.floor(Math.random() * 3) + 1;
+    let computerChoice = Math.floor(Math.random() * 3) + 1;
+    let choice = undefined;
+    //Give choice an equivalent value according to userChoice numeric value
+    switch (true) {
+        case computerChoice === 1:
+            choice = "rock";
+            return choice;
+        case computerChoice === 2:
+            choice = "paper";
+            return choice;
+        case computerChoice === 3:
+            choice = "scissors";
+            return choice;
+    }
 }
 
 function getHumanChoice() {
     while (true) {
         let userChoice = prompt("Enter your choice (Rock, Paper or Scissors):");
 
-        //Make variable case-insensitive
+        //Make variable case-insensitive and check if userChoice is rock, paper or scissors.
         userChoice = userChoice.toLowerCase();
 
-        let choice = undefined;
-        //Give the choice a numeric value according to userChoice
-        switch (true) {
-            case userChoice === "rock":
-                choice = 1;
-                return choice;
-            case userChoice === "paper":
-                choice = 2;
-                return choice;
-            case userChoice === "scissors":
-                choice = 3;
-                return choice;
+        if (userChoice === "rock" || userChoice === "paper" || userChoice === "scissors") {
+            return userChoice;
         }
 
         alert("Invalid choice. Please enter Rock, Paper or Scissors.");
     }
+}
+
+function playRound(playerChoice, machineChoice) {
+
 }
 
 let humanScore = 0;
