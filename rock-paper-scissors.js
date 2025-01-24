@@ -1,5 +1,10 @@
 console.log("Rock, paper, scissors.");
 
+let humanScore = 0;
+let computerScore = 0;
+let humanSelection = getHumanChoice();
+let computerSelection = getComputerChoice();
+
 function getComputerChoice() {
     let computerChoice = Math.floor(Math.random() * 3) + 1;
     let choice = undefined;
@@ -32,6 +37,8 @@ function getHumanChoice() {
     }
 }
 
+
+
 function playRound(playerChoice, machineChoice) {
 
     if (playerChoice === machineChoice) {
@@ -40,16 +47,32 @@ function playRound(playerChoice, machineChoice) {
 
     switch (playerChoice) {
         case "rock":
-            return (machineChoice === "paper") ? "Paper beats Rock. You lose!" : "Rock beats Scissors. You win!";
+            if (machineChoice === "paper") {
+                computerScore += 1;
+                return console.log("Paper beats Rock. You lose!");
+            }
+
+            humanScore += 1;
+            return console.log("Rock beats Scissors. You win!");
+
         case "paper":
-            return (machineChoice === "scissors") ? "Scissors beats Paper. You lose!" : "Paper beats Rock. You win!";
+            if (machineChoice === "scissors") {
+                computerScore += 1;
+                return console.log("Scissors beats Paper. You lose!");
+            }
+
+            humanScore += 1;
+            return console.log("Paper beats Rock. You win!");
+
         case "scissors":
-            return (machineChoice === "rock") ? "Rock beats Scissors. You lose!" : "Scissors beats Paper. You win!";
+            if (machineChoice === "rock") {
+                computerScore += 1;
+                return console.log("Rock beats Scissors. You lose!");
+            }
+
+            humanScore += 1;
+            return console.log("Scissors beats Paper. You win!");
     }
 
 }
 
-let humanScore = 0;
-let computerScore = 0;
-let humanSelection = getHumanChoice();
-let computerSelection = getComputerChoice();
