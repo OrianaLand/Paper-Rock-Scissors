@@ -1,7 +1,6 @@
 console.log("Welcome to Rock, paper, scissors game.");
 
-let humanSelection;
-let computerSelection;
+
 
 function getComputerChoice() {
     let computerChoice = Math.floor(Math.random() * 3) + 1;
@@ -40,6 +39,8 @@ function getHumanChoice() {
 function playGame() {
     let humanScore = 0;
     let computerScore = 0;
+    let humanSelection;
+    let computerSelection;
 
     for (let i = 0; i < 5; i++) {
         humanSelection = getHumanChoice();
