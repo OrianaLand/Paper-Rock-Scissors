@@ -3,18 +3,15 @@ let computerScore = 0;
 
 function getComputerChoice() {
     let computerChoice = Math.floor(Math.random() * 3) + 1;
-    let choice = undefined;
+
     //Give choice an equivalent value according to computerChoice numeric value
-    switch (true) {
-        case computerChoice === 1:
-            choice = "rock";
-            return choice;
-        case computerChoice === 2:
-            choice = "paper";
-            return choice;
-        case computerChoice === 3:
-            choice = "scissors";
-            return choice;
+    switch (computerChoice) {
+        case 1:
+            return "rock";
+        case 2:
+            return "paper";
+        case 3:
+            return "scissors";
     }
 }
 
