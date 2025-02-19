@@ -27,30 +27,14 @@ function playGame() {
             return;
         }
 
-        switch (playerChoice) {
-            case "rock":
-                if (machineChoice === "paper") {
-                    computerScore += 1;
-                    break;
-                }
-                humanScore += 1;
-                break;
-
-            case "paper":
-                if (machineChoice === "scissors") {
-                    computerScore += 1;
-                    break;
-                }
-                humanScore += 1;
-                break;
-
-            case "scissors":
-                if (machineChoice === "rock") {
-                    computerScore += 1;
-                    break;
-                }
-                humanScore += 1;
-                break;
+        if (
+            (playerChoice === "rock" && machineChoice === "scissors") ||
+            (playerChoice === "paper" && machineChoice === "rock") ||
+            (playerChoice === "scissors" && machineChoice === "paper")
+        ) {
+            humanScore++;
+        } else {
+            computerScore++;
         }
 
     }
