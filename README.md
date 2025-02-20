@@ -1,6 +1,6 @@
 # Rock, Paper, Scissors Game
 
-This is a simple implementation of the classic game **Rock Paper Scissors**, built as part of [The Odin Project](https://www.theodinproject.com/) curriculum. The game is played entirely in the browser console, with a basic user interface (UI) added for interactivity. The project demonstrates core JavaScript concepts such as functions, event handling, DOM manipulation, and basic game logic.
+This is a simple implementation of the classic game **Rock Paper Scissors**, built as part of [The Odin Project](https://www.theodinproject.com/) curriculum. The game features a graphical user interface (GUI) where players can click buttons to make their choice. The project demonstrates core JavaScript concepts such as functions, event handling, DOM manipulation, and basic game logic.
 
 ## Features
 
