@@ -66,6 +66,8 @@ function playGame() {
 
 
     container.addEventListener("click", (event) => {
+        /* Make sure only valid clicks inside the buttons are processed */
+        if (!["rock", "paper", "scissors"].includes(event.target.id) || resultShowed) return;
 
         if (humanScore < 5 && computerScore < 5) {
             const target = event.target;
@@ -76,16 +78,15 @@ function playGame() {
             choiceDisplay.textContent = `You chose: ${playerChoice} | Computer chose: ${computerChoice}`;
             liveScore.textContent = `| Human: ${humanScore} | -- | Computer: ${computerScore} |`;
         }
-        /* Stops printing the final result when the event listener fires after the game has a winner */
-        if ((humanScore === 5 || computerScore === 5) && (!resultShowed)) {
-            if (humanScore > computerScore) {
-                resultMessage.textContent = "Human wins!";
 
-            } else {
-                resultMessage.textContent = "Computer wins!";
-            }
+        if (humanScore === 5 || computerScore === 5) {
+
+            resultMessage.textContent = `${humanScore > computerScore ? "Human wins!" : "Computer wins!"}`;
+
+            /* Stops printing the final result when the event listener fires after the game has a winner */
             resultShowed = true;
         }
+
     })
 
 }
