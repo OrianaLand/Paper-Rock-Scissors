@@ -1,30 +1,28 @@
-let humanScore = 0;
-let computerScore = 0;
-
-function getComputerChoice() {
-    let computerChoice = Math.floor(Math.random() * 3) + 1;
-
-    //Give choice an equivalent value according to computerChoice numeric value
-    switch (computerChoice) {
-        case 1:
-            return "rock";
-        case 2:
-            return "paper";
-        case 3:
-            return "scissors";
-    }
-}
-
 function playGame() {
 
-    let computerSelection;
+    let humanScore = 0;
+    let computerScore = 0;
     let resultShowed = false; /* This variable is set to false because the final result hasn't been printed */
+
+    function getComputerChoice() {
+        let computerChoice = Math.floor(Math.random() * 3) + 1;
+
+        //Give choice an equivalent value according to computerChoice numeric value
+        switch (computerChoice) {
+            case 1:
+                return "rock";
+            case 2:
+                return "paper";
+            case 3:
+                return "scissors";
+        }
+    }
 
     function playRound(playerChoice, machineChoice) {
 
         if (playerChoice === machineChoice) {
-            alert("This round was a tie. No points added to either score");
-            return;
+            /* alert("Tie. No points added") */
+            return "Tie";
         }
 
         if (
@@ -33,67 +31,59 @@ function playGame() {
             (playerChoice === "scissors" && machineChoice === "paper")
         ) {
             humanScore++;
+            return "Win";
         } else {
             computerScore++;
+            return "Lose";
         }
 
     }
 
+    function createButton(id, text, parent) {
+        const button = document.createElement("button");
+        button.id = id;
+        button.textContent = text;
+        parent.appendChild(button);
+    }
+
+
     const container = document.createElement("div");
     container.id = "container";
+
+    createButton("rock", "Rock", container);
+    createButton("paper", "Paper", container);
+    createButton("scissors", "Scissors", container);
+
     const resultDiv = document.createElement("div");
     resultDiv.id = "result";
 
-    document.body.append(container, resultDiv);
-
-    const rockBtn = document.createElement("button");
-    rockBtn.textContent = "Rock";
-    rockBtn.id = "rock";
-
-    const paperBtn = document.createElement("button");
-    paperBtn.textContent = "Paper";
-    paperBtn.id = "paper";
-
-    const scissorsBtn = document.createElement("button");
-    scissorsBtn.textContent = "Scissors";
-    scissorsBtn.id = "scissors";
-
-    container.append(rockBtn, paperBtn, scissorsBtn);
-
     const liveScore = document.createElement("p");
-    resultDiv.append(liveScore);
+    const choiceDisplay = document.createElement("p");
+    const resultMessage = document.createElement("p");
+
+    document.body.append(container, resultDiv);
+    resultDiv.append(liveScore, choiceDisplay, resultMessage);
+
 
 
     container.addEventListener("click", (event) => {
 
         if (humanScore < 5 && computerScore < 5) {
-            let target = event.target;
+            const target = event.target;
+            const playerChoice = target.id;
+            const computerChoice = getComputerChoice();
+            const result = playRound(playerChoice, computerChoice);
 
-            switch (target.id) {
-                case 'rock':
-                    computerSelection = getComputerChoice();
-                    playRound("rock", computerSelection);
-                    liveScore.textContent = "| Human: " + humanScore + " | -- | Computer: " + computerScore + " |";
-                    break;
-                case 'paper':
-                    computerSelection = getComputerChoice();
-                    playRound("paper", computerSelection);
-                    liveScore.textContent = "| Human: " + humanScore + " | -- | Computer: " + computerScore + " |";
-                    break;
-                case 'scissors':
-                    computerSelection = getComputerChoice();
-                    playRound("scissors", computerSelection);
-                    liveScore.textContent = "| Human: " + humanScore + " | -- | Computer: " + computerScore + " |";
-                    break;
-            }
+            choiceDisplay.textContent = `You chose: ${playerChoice} | Computer chose: ${computerChoice}`;
+            liveScore.textContent = `| Human: ${humanScore} | -- | Computer: ${computerScore} |`;
         }
         /* Stops printing the final result when the event listener fires after the game has a winner */
         if ((humanScore === 5 || computerScore === 5) && (!resultShowed)) {
             if (humanScore > computerScore) {
-                liveScore.innerHTML += "<br>Human wins!";
+                resultMessage.textContent = "Human wins!";
 
             } else {
-                liveScore.innerHTML += "<br>Computer wins!";
+                resultMessage.textContent = "Computer wins!";
             }
             resultShowed = true;
         }
