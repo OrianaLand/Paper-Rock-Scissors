@@ -21,7 +21,6 @@ function playGame() {
     function playRound(playerChoice, machineChoice) {
 
         if (playerChoice === machineChoice) {
-            /* alert("Tie. No points added") */
             return "Tie";
         }
 
@@ -72,7 +71,7 @@ function playGame() {
             const target = event.target;
             const playerChoice = target.id;
             const computerChoice = getComputerChoice();
-            const result = playRound(playerChoice, computerChoice);
+            playRound(playerChoice, computerChoice);
 
             choiceDisplay.textContent = `You chose: ${playerChoice} | Computer chose: ${computerChoice}`;
             liveScore.textContent = `| Human: ${humanScore} | -- | Computer: ${computerScore} |`;

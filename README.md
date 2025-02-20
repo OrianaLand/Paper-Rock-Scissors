@@ -31,8 +31,7 @@ Here's a snippet of the core game logic:
 function playRound(playerChoice, machineChoice) {
 
         if (playerChoice === machineChoice) {
-            alert("This round was a tie. No points added to either score");
-            return;
+            return "Tie";
         }
 
         if (
@@ -41,8 +40,9 @@ function playRound(playerChoice, machineChoice) {
             (playerChoice === "scissors" && machineChoice === "paper")
         ) {
             humanScore++;
+            return "Win";
         } else {
             computerScore++;
+            return "Lose";
         }
-
     }
