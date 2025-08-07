@@ -1,5 +1,7 @@
 # Rock, Paper, Scissors Game
 
+🔗 [**Live Demo**](https://orianaland.github.io/Paper-Rock-Scissors/)
+
 This is a simple implementation of the classic game **Rock Paper Scissors**, built as part of [The Odin Project](https://www.theodinproject.com/) curriculum. The game features a graphical user interface (GUI) where players can click buttons to make their choice. The project demonstrates core JavaScript concepts such as functions, event handling, DOM manipulation, and basic game logic.
 
 ## Features
@@ -29,20 +31,20 @@ Here's a snippet of the core game logic:
 
 ```javascript
 function playRound(playerChoice, machineChoice) {
+  if (playerChoice === machineChoice) {
+    return "Tie";
+  }
 
-        if (playerChoice === machineChoice) {
-            return "Tie";
-        }
-
-        if (
-            (playerChoice === "rock" && machineChoice === "scissors") ||
-            (playerChoice === "paper" && machineChoice === "rock") ||
-            (playerChoice === "scissors" && machineChoice === "paper")
-        ) {
-            humanScore++;
-            return "Win";
-        } else {
-            computerScore++;
-            return "Lose";
-        }
-    }
+  if (
+    (playerChoice === "rock" && machineChoice === "scissors") ||
+    (playerChoice === "paper" && machineChoice === "rock") ||
+    (playerChoice === "scissors" && machineChoice === "paper")
+  ) {
+    humanScore++;
+    return "Win";
+  } else {
+    computerScore++;
+    return "Lose";
+  }
+}
+```
